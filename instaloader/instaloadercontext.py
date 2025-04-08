@@ -202,7 +202,7 @@ class InstaloaderContext:
     def get_anonymous_session(self) -> requests.Session:
         """Returns our default anonymous requests.Session object."""
         session = requests.Session()
-        session.cookies.update({'sessionid': '', 'mid': '', 'ig_pr': '1',
+        session.cookies.update({'sessionid': os.env['SESSION_ID'], 'mid': '', 'ig_pr': '1',
                                 'ig_vw': '1920', 'csrftoken': '',
                                 's_network': '', 'ds_user_id': ''})
         session.headers.update(self._default_http_header(empty_session_only=True))
@@ -266,7 +266,7 @@ class InstaloaderContext:
         # pylint:disable=protected-access
         http.client._MAXHEADERS = 200
         session = requests.Session()
-        session.cookies.update({'sessionid': '', 'mid': '', 'ig_pr': '1',
+        session.cookies.update({'sessionid': os.env['SESSION_ID'], 'mid': '', 'ig_pr': '1',
                                 'ig_vw': '1920', 'ig_cb': '1', 'csrftoken': '',
                                 's_network': '', 'ds_user_id': ''})
         session.headers.update(self._default_http_header())
